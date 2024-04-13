@@ -65,8 +65,8 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Create SubscriberRequest model struct.`
     -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
     -   [x] Commit: `Implement add function in Notification repository.`
-    -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -85,5 +85,10 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. In this tutorial, we used `RwLock<>` to synchronise the use of Vec of Notifications. Explain why it is necessary for this case, and explain why we do not use `Mutex<>` instead?
+> `Mutex<>` would be less efficient for scenarios with frequent read operations because it only allows one thread at a time to acquire access to the data, whether for reading or writing, while `RwLock<>` allows multiple threads to acquire read access to the data simultaneously, which increases performance.
+
+2. In this tutorial, we used `lazy_static` external library to define `Vec` and `DashMap` as a “**static**” variable. Compared to Java where we can mutate the content of a **static** variable via a **static** function, why did not Rust allow us to do so?
+> Rust enforces the concept of mutability by the language's ownership and borrowing system, which ensures memory safety and prevents data races at compile time. Unlike in some other languages like Java, where static variables can be freely mutated by static methods or functions, Rust's approach to mutability is more strict and explicit, to avoid data races and other concurrency issues, resulting in Thread Safety, Encapsulation, Modularity, Safety, and Concurrency.
 
 #### Reflection Subscriber-2
