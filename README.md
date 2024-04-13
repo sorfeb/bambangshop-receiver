@@ -92,3 +92,16 @@ This is the place for you to write reflections:
 > Rust enforces the concept of mutability by the language's ownership and borrowing system, which ensures memory safety and prevents data races at compile time. Unlike in some other languages like Java, where static variables can be freely mutated by static methods or functions, Rust's approach to mutability is more strict and explicit, to avoid data races and other concurrency issues, resulting in Thread Safety, Encapsulation, Modularity, Safety, and Concurrency.
 
 #### Reflection Subscriber-2
+1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+> - `src/lib.rs` sets up the necessary configuration and error handling infrastructure for the application, including lazy-initialized static variables for the HTTP client and application configuration, structs representing configuration and error responses, and utility functions for error handling.
+> - `src/main.rs` is the entry point for the application in Rust. It sets up the application's structure, including routes, services, repositories, and models.
+
+2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+> The Observer pattern eases the process of plugging in more subscribers by providing a flexible and decoupled way to notify multiple subscribers of changes or events in a system.  In the Observer pattern, the subjects (publishers) and the observers (subscribers) are decoupled from each other. This means that the subjects do not need to have direct knowledge of the observers, and vice versa. This **decoupling** allows for more flexibility.  Observers can **dynamically register** themselves with a subject to receive notifications. This means new subscribers can easily subscribe by creating instances of the observer classes and registering them with the subject. There's no need to modify the subject or other observers to accommodate new subscribers.
+<br><br>
+Each instance of the main app can act as a subject, and you can register observers with each instance independently. As long as the main app provides a mechanism for observers to register and receive notifications, adding more subscribers should not significantly increase the complexity of the system. This scalability and ease of adding subscribers make the Observer pattern well-suited for systems with multiple instances or distributed components.
+
+3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+> I haven't tried to make my own Tests
